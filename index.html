@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DS2 Visualizer Pro — VIT</title>
+  <link rel="stylesheet" href="/src/styles/main.css" />
+</head>
+<body>
+  <!-- AUTH OVERLAY -->
+  <div id="auth-overlay" style="display: none;">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h2 id="auth-title">Welcome Back</h2>
+        <p id="auth-subtitle">Sign in to sync your progress</p>
+      </div>
+      <form id="auth-form" class="auth-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" class="auth-input" placeholder="name@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" class="auth-input" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="auth-btn" id="auth-submit-btn">Sign In</button>
+      </form>
+      <div class="auth-switch">
+        <span id="auth-toggle">Don't have an account? Sign Up</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div id="sidebar">
+    <div class="sidebar-logo">
+      <div class="title">DS2 Visualizer</div>
+      <div class="sub">Vishwakarma Institute</div>
+      <div class="badge">PRO VERSION</div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Overview</div>
+      <div class="nav-item active" data-page="dashboard">
+        <div class="dot" style="background: var(--accent)"></div> Dashboard
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Algorithms</div>
+      <div class="nav-item" data-page="avl">
+        <div class="dot" style="background: var(--green)"></div> AVL Tree
+        <span class="status status-ready">ready</span>
+      </div>
+      <div class="nav-item" data-page="rbt">
+        <div class="dot" style="background: var(--red)"></div> Red-Black Tree
+        <span class="status status-ready">ready</span>
+      </div>
+      <div class="nav-item" data-page="heap">
+        <div class="dot" style="background: var(--orange)"></div> Heap
+        <span class="status status-ready">ready</span>
+      </div>
+    </div>
+
+    <div class="sidebar-user" id="user-section" style="display: none;">
+      <div class="user-avatar" id="user-initials">?</div>
+      <div class="user-info">
+        <div class="user-name" id="user-display-name">Guest User</div>
+        <div class="user-logout" id="logout-btn">Sign Out</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main">
+    <div id="topbar">
+      <span class="tree-name" id="page-title">Dashboard</span>
+      <span class="tree-unit" id="page-subtitle"></span>
+      <div class="topbar-actions">
+        <div id="tree-controls" style="display: none;">
+          <input type="number" id="tree-input" class="inp" placeholder="Value..." />
+          <button class="btn btn-blue" id="insert-btn">Insert</button>
+          <button class="btn" id="reset-btn">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGES -->
+    <div id="pages-container">
+      <!-- Dashboard Page -->
+      <div id="page-dashboard" class="page-content active">
+        <div class="dashboard-content">
+          <div class="hero-section">
+            <h1>Master Data Structures</h1>
+            <p>Interactive, step-by-step visualizations designed for VIT students. Track your progress and save your results across sessions.</p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-label">Total Operations</span>
+              <span class="stat-value" id="stat-total">0</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-label">Last Session</span>
+              <span class="stat-value" id="stat-last">None</span>
+            </div>
+          </div>
+
+          <div class="dash-grid" id="tree-cards">
+            <!-- Cards generated dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Tree Page -->
+      <div id="page-tree" class="page-content" style="display: none;">
+        <div id="workspace">
+          <div id="canvas-panel">
+            <div id="svg-container">
+              <svg id="tree-svg" viewBox="0 0 900 500" preserveAspectRatio="xMidYMid meet">
+                <g id="svg-root"></g>
+              </svg>
+            </div>
+          </div>
+          <div id="obs-panel">
+            <div class="obs-header">
+              <span class="obs-title">Session History</span>
+            </div>
+            <div id="obs-history">
+              <!-- Logs generated here -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
